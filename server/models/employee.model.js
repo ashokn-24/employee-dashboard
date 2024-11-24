@@ -3,8 +3,9 @@ const mongoose = require("mongoose");
 const employeeSchema = mongoose.Schema(
   {
     f_id: {
-      type: String,
+      type: Number,
       required: true,
+      unique: true,
     },
     f_image: {
       type: String,
@@ -16,18 +17,23 @@ const employeeSchema = mongoose.Schema(
       type: String,
     },
     f_mobile: {
-      type: Number,
+      type: String,
     },
     f_gender: {
       type: String,
       enum: ["Male", "Female"],
-      default: "",
+      default: null,
     },
     f_designation: {
       type: String,
     },
+    f_course: {
+      type: String,
+    },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
-module.exports = mongoose.model("Employee", employeeSchema);
+const Employee = mongoose.model("Employee", employeeSchema);
+
+module.exports = Employee;

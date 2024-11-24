@@ -7,14 +7,19 @@ const AuthSchema = mongoose.Schema(
     },
     f_username: {
       type: String,
+      required: true,
+      unique: true,
     },
     f_password: {
       type: String,
+      required: true,
     },
   },
   {
-    timestamp: true,
+    timestamps: true,
   }
 );
 
-module.exports = mongoose.model("AuthSchema", AuthSchema);
+const Auth = mongoose.model("Auth", AuthSchema);
+
+module.exports = Auth;
